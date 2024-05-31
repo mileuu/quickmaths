@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stinky Love</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to right, #f0f0f0, #ffffff);
+        }
+        .main-text {
+            font-size: 3em;
+            font-weight: bold;
+            animation: fadeIn 2s;
+        }
+        .sub-text {
+            font-size: 1.5em;
+            margin-top: 10px;
+            animation: colorChange 2s infinite;
+        }
+        @keyframes colorChange {
+            0% { color: red; }
+            25% { color: orange; }
+            50% { color: yellow; }
+            75% { color: green; }
+            100% { color: blue; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .hidden-message {
+            display: none;
+            font-size: 2em;
+            color: red;
+            margin-top: 20px;
+        }
+        .corner-button {
+            display: none;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            font-size: 0.8em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .corner-button:hover {
+            background-color: #218838;
+        }
+        .gay-message {
+            font-size: 1em;
+            position: absolute;
+            animation: float 5s linear infinite;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: nowrap;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-50px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-text">your stinky</div>
+        <div class="sub-text">but I love you</div>
+        <button class="button" onclick="showWrongMessage()">Click me if you also love me</button>
+        <div class="hidden-message">SIKE THAT'S THE WRONG BUTTON</div>
+        <button class="corner-button" onclick="showGayMessages()">It's actually this one</button>
+    </div>
+
+    <script>
+        function showWrongMessage() {
+            const hiddenMessage = document.querySelector('.hidden-message');
+            const cornerButton = document.querySelector('.corner-button');
+            hiddenMessage.style.display = 'block';
+            cornerButton.style.display = 'block';
+        }
+
+        function showGayMessages() {
+            const gayMessagesContainer = document.createElement('div');
+            gayMessagesContainer.classList.add('gay-messages-container');
+            document.body.appendChild(gayMessagesContainer);
+
+            const colors = ['#FF0000', '#FF4500', '#FFA500', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#8A2BE2', '#4B0082', '#800080'];
+            const fonts = ["Arial", "Verdana", "Tahoma", "Times New Roman", "Georgia", "Courier New", "Brush Script MT", "Comic Sans MS"];
+
+            for (let i = 0; i < 150; i++) {
+                const gayMessage = document.createElement('div');
+                gayMessage.textContent = "ur gay";
+                gayMessage.classList.add('gay-message');
+                gayMessage.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+                gayMessage.style.top = Math.random() * (window.innerHeight - 20) + 'px';
+                gayMessage.style.color = colors[Math.floor(Math.random() * colors.length)];
+                gayMessage.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)];
+                gayMessagesContainer.appendChild(gayMessage);
+            }
+        }
+    </script>
+</body>
+</html>
